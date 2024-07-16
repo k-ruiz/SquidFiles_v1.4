@@ -1,8 +1,8 @@
 % Title: Code to get the fluid flow from a set of Regularized Stokeslets.
 % Author: Stephen Williams.
 
-%close all
-%clear all %#ok<CLALL>
+close
+tic
 
 %% Add the function files need to run
 addpath('functions/')
@@ -11,6 +11,10 @@ addpath('classes/')
 %% Set parameters
 parameters % Set the parameters
 
+N = 50;
+U0 = 100/45;
+omega = 2*pi/N; 
+
 %% Set channel geometry
 stks = getStokesletPositions(rho,system,U0);
 
@@ -18,10 +22,6 @@ stks = getStokesletPositions(rho,system,U0);
 [iS] = getForces(stks,eps_reg);
 
 %% Get the flow over the space
-
-N = 50;
-U0 = 100/45;
-omega = 2*pi/N; 
 
 for ii = 1:N
 
@@ -43,7 +43,9 @@ for ii = 1:N
     scatter(stks(:,2),stks(:,1),0.5,'r');
     a = find(stks(:,3) == 2);
     quiver(stks(a(1:4:end),2),stks(a(1:4:end),1),stks(a(1:4:end),5),stks(a(1:4:end),4),'off','k')
-    
+    %quiver(stks(x(1:4:end),2),stks(y(1:4:end),1),stks(Uflowx(1:4:end),5),stks(Uflowy(1:4:end),4),'off','k')
+
+
     % set(gca,'ylim',[-10 10])
     % set(gca,'xlim',[-12 22])
     axis equal
@@ -56,11 +58,13 @@ end
 
 video = true;
 
-if video == true
+if video == true % AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+
+    %if havinng problems quality, ffmpeg to convert to better quality. also use handbrake
 
     v = VideoWriter('breathCycle','MPEG-4');
     v.Quality = 100;
-    v.FrameRate = 12;
+    v.FrameRate = 500;
 
     open(v);
 
@@ -74,3 +78,5 @@ if video == true
     close(v);
 
 end
+
+toc

@@ -10,7 +10,7 @@ function [channel_stks] = geometry_poisuelle(rho2,Lt2,Lm2,Lb2,theta2,Ptx2,Pty2)
     WRTl = linspace(0,Lt2,floor(Lt2*rho2)); % Parameterise the right wall top section.
     WRTl = WRTl(1:end); % Remove overlapping points to prevent blow-up.
     WRMl = linspace(0,Lm2,floor(Lm2*rho2)); % Parameterise the right wall middle section.
-    WRBl = linspace(0,Lb2,floor(Lb2*rho2)); % Parameterise the right wall bottom section.
+    WRBl = linspace(0,Lb2+1,floor(Lb2*rho2)); % Parameterise the right wall bottom section.
     WRBl = WRBl(1:end); % Remove overlapping points to prevent blow-up.
 
     WRT = [Ptx2 - WRTl*sin(0); Pty2 - WRTl*cos(0);ones(floor(Lt2*rho2),1)']'; % Get the top segment coordinates.
@@ -24,8 +24,8 @@ function [channel_stks] = geometry_poisuelle(rho2,Lt2,Lm2,Lb2,theta2,Ptx2,Pty2)
     wallL(:,1) = -wallL(:,1); % Reflect x-coordinate.
 
     % Construct the top boundary.
-    wallT = [linspace(-Ptx2,Ptx2,floor(2*Ptx2*rho2)); Pty2*ones(floor(2*Ptx2*rho2),1)'; 2*ones(floor(2*Ptx2*rho2),1)']';
-    wallT = wallT(2:end-1,:);
+    % wallT = [linspace(-Ptx2,Ptx2,floor(2*Ptx2*rho2)); Pty2*ones(floor(2*Ptx2*rho2),1)'; 2*ones(floor(2*Ptx2*rho2),1)']';
+    % wallT = wallT(2:end-1,:);
 
     % Construct the bottom boundary. % Optional: if we ever want a close system this code can be used.
     % Lbottom = Ptx2 - WRMl(end)*sin(theta2); % x-distance from horizontal to bottom segement.
