@@ -3,7 +3,7 @@
 % Parameters:
 
 NDL = 45; % Non-dimensional length scale
-rho = 5.0; % change to 10
+rho = 10.0; 
 eps_reg = 0.5/rho; % Regularisaton parameter.
 
 system = geometry;
