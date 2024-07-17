@@ -41,9 +41,9 @@ for ii = 1:N
     c=colorbar;
     c.Limits=[0 10]; % the range that I want
     scatter(stks(:,2),stks(:,1),0.5,'r');
+    quiver(y(1:n:end),x(1:n:end),Uflowy(1:n:end,1:n:end),Uflowx(1:n:end,1:n:end),2,'Color','w') % Plot the vector field FIX THIS PART ----------------------------
     a = find(stks(:,3) == 2);
     quiver(stks(a(1:4:end),2),stks(a(1:4:end),1),stks(a(1:4:end),5),stks(a(1:4:end),4),'off','k')
-    %quiver(stks(x(1:4:end),2),stks(y(1:4:end),1),stks(Uflowx(1:4:end),5),stks(Uflowy(1:4:end),4),'off','k')
 
 
     % set(gca,'ylim',[-10 10])
@@ -58,13 +58,13 @@ end
 
 video = true;
 
-if video == true % AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+if video == true % this is the part that i need to edit
 
-    %if havinng problems quality, ffmpeg to convert to better quality. also use handbrake
+    %if havinng problems quality, ffmpeg to convert to better quality. also handbrake
 
     v = VideoWriter('breathCycle','MPEG-4');
     v.Quality = 100;
-    v.FrameRate = 500;
+    v.FrameRate = 12;
 
     open(v);
 
