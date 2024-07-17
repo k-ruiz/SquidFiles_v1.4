@@ -41,14 +41,14 @@ for ii = 1:N
     c=colorbar;
     c.Limits=[0 10]; % the range that I want
     scatter(stks(:,2),stks(:,1),0.5,'r');
-    quiver(y(1:n:end),x(1:n:end),Uflowy(1:n:end,1:n:end),Uflowx(1:n:end,1:n:end),2,'Color','w') % Plot the vector field FIX THIS PART ----------------------------
+    quiver(y(1:n:end),x(1:n:end),Uflowy(1:n:end,1:n:end),Uflowx(1:n:end,1:n:end),2,'Color','w') 
     a = find(stks(:,3) == 2);
     quiver(stks(a(1:4:end),2),stks(a(1:4:end),1),stks(a(1:4:end),5),stks(a(1:4:end),4),'off','k')
 
 
-    % set(gca,'ylim',[-10 10])
-    % set(gca,'xlim',[-12 22])
-    axis equal
+    set(gca,'ylim',[-30 30])
+    set(gca,'xlim',[-10 50])
+    axis square
     saveas(gcf,['outputs/breathCycle/breathCycle_' num2str(ii) '.png'])
     save(['outputs/breathCycle/breathCycle_Uback_omega_' num2str(ii)],'Uback','omega1');
     pause(0.5);

@@ -39,4 +39,4 @@ nptx = scaling*100; % Solver points in x direction.
 npty = scaling*100; % Solver points in y direction.
 Ptx = system.appendage_parameters(3);
 x = linspace(-30,+30,nptx); % Solver x coords.
-y = linspace(-10,+50,npty); % Solver y coords.
+y = linspace(-15,+50,npty); % Solver y coords.
