@@ -11,7 +11,7 @@ addpath('classes/')
 %% Set parameters
 parameters % Set the parameters
 
-N = 50;
+N = 100;
 U0 = 100/45;
 omega = 2*pi/N; 
 
@@ -60,7 +60,7 @@ video = true;
 
 if video == true % this is the part that i need to edit
 
-    %if havinng problems quality, ffmpeg to convert to better quality. also handbrake
+    %if having problems quality, ffmpeg to convert to better quality. also handbrake
 
     v = VideoWriter('breathCycle','MPEG-4');
     v.Quality = 100;
