@@ -33,8 +33,8 @@ system.capsule_parameters(3) = system.channel_parameters(6)-system.channel_param
 %U0 = -100/NDL; % Background flow strength Max.
 
 % Underlying space parameters.
-n=5; % plot coarseness
-scaling = 1;
+n=20; % plot coarseness
+scaling = 5;
 nptx = scaling*100; % Solver points in x direction.
 npty = scaling*100; % Solver points in y direction.
 Ptx = system.appendage_parameters(3);
